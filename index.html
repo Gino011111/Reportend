@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>廖政瑜的期中報告</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+
+    <style>
+      /* 選單樣式 */
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px;
+        display: flex;
+        gap: 50px; /* 每個項目的距離 */
+      }
+
+      li {
+        background-color: #edf6f9; /* 圓角矩形顏色 */
+        border-radius: 15px; /* 圓角 */
+        padding: 10px 20px;
+        font-size: 30px; /* 文字大小 */
+        color: #0077b6; /* 字體顏色 */
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      li:hover {
+        background-color: #caf0f8; /* 滑鼠懸停時的背景顏色 */
+      }
+
+      /* iframe 樣式 */
+      iframe {
+        display: none; /* 預設隱藏 */
+        width: 100%;
+        height: 80vh;
+        border: none;
+        background-color: transparent; /* 透明背景 */
+      }
+
+      iframe.active {
+        display: block; /* 顯示 iframe */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 選單 -->
+    <ul>
+      <li onclick="showIframe('')">首頁</li>
+      <li onclick="showIframe('http://127.0.0.1:5500/index.html')">自我介紹</li>
+      <li onclick="showIframe('https://gino011111.github.io/banten/')">作品集</li>
+      <li onclick="showIframe('https://gino011111.github.io/questions/')">測驗卷</li>
+      <li onclick="showIframe('https://www.youtube.com/embed/MFCDNF3rS9A')">教學影片</li>
+    </ul>
+
+    <!-- iframe 區域 -->
+    <iframe id="contentFrame"></iframe>
+
+    <script src="sketch.js"></script>
+    <script>
+      // 顯示 iframe 的函數
+      function showIframe(url) {
+        const iframe = document.getElementById('contentFrame');
+        if (url) {
+          iframe.src = url; // 設定 iframe 的來源
+          iframe.classList.add('active'); // 顯示 iframe
+        } else {
+          iframe.src = ''; // 清空 iframe 的來源
+          iframe.classList.remove('active'); // 隱藏 iframe
+        }
+      }
+    </script>
+  </body>
+</html>
